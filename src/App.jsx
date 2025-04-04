@@ -34,10 +34,11 @@ const App = () => {
         handleResetClick={handleResetClick}
         totalFeedback={totalFeedback}
       />
-      {totalFeedback > 0 && (
+      {totalFeedback > 0 ? (
         <Feedback feedbacks={feedbacks} totalFeedback={totalFeedback} />
+      ) : (
+        <Notification totalFeedback={totalFeedback} />
       )}
-      {totalFeedback <= 0 && <Notification totalFeedback={totalFeedback} />}
     </Container>
   );
 };
