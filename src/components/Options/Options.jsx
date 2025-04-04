@@ -1,3 +1,4 @@
+import s from "./Options.module.css";
 const Options = ({
   updateFeedback,
   feedbacksData,
@@ -5,14 +6,20 @@ const Options = ({
   totalFeedback,
 }) => {
   return (
-    <ul>
+    <ul className={s.optionsList}>
       {feedbacksData.map((item) => (
-        <li key={item}>
-          <button onClick={() => updateFeedback(item)}>{item}</button>
+        <li className={s.optionsListItem} key={item}>
+          <button className={s.optionsBtn} onClick={() => updateFeedback(item)}>
+            {item.charAt(0).toUpperCase() + item.slice(1)}
+          </button>
         </li>
       ))}
-      <li>
-        {totalFeedback > 0 && <button onClick={handleResetClick}>Reset</button>}
+      <li className={s.optionsListItem}>
+        {totalFeedback > 0 && (
+          <button className={s.optionsBtn} onClick={handleResetClick}>
+            Reset
+          </button>
+        )}
       </li>
     </ul>
   );

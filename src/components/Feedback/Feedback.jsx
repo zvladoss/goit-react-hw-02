@@ -1,14 +1,16 @@
-const Feedback = ({ feedbacks, totalFeedback }) => {
-  const positiveFeedback = Math.round((feedbacks.good / totalFeedback) * 100);
+import s from "./Feedback.module.css";
+const Feedback = ({ feedbacks, totalFeedback, positiveFeedback }) => {
   return (
-    <ul>
+    <ul className={s.feedbackList}>
       {Object.keys(feedbacks).map((item) => (
-        <li key={item}>
-          {item}:{feedbacks[item]}
+        <li className={s.feedbackListItem} key={item}>
+          {item.charAt(0).toUpperCase() + item.slice(1)}: {feedbacks[item]}
         </li>
       ))}
-      <li>Total: {totalFeedback}</li>
-      <li>Positive: {positiveFeedback}%</li>
+      <li className={s.feedbackListItem}>Total: {totalFeedback}</li>
+      <li className={s.feedbackListItem}>
+        Positive: {positiveFeedback ?? 0}% %
+      </li>
     </ul>
   );
 };
